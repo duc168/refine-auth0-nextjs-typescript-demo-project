@@ -1,3 +1,4 @@
+import configs from "configs";
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 
@@ -6,11 +7,11 @@ export const authOptions = {
   providers: [
     // !!! Should be stored in .env file.
     Auth0Provider({
-      clientId: `Be5vsLunFvpzPf4xfXtaMxrZUVBjjNPO`,
-      clientSecret: `08F9X84FvzpsimV16CQvlQuwJOlqk-GqQgEdcq_3xzrn1K3UHnTCcRgMCwBW7api`,
-      issuer: `https://dev-qg1ftdys736bk5i3.us.auth0.com`,
+      clientId: configs.AUTH0.clientId,
+      clientSecret: configs.AUTH0.clientSecret,
+      issuer: configs.AUTH0.domain,
     }),
   ],
-  secret: `UItTuD1HcGXIj8ZfHUswhYdNd40Lc325R8VlxQPUoR0=`,
+  secret: configs.AUTH0.clientSecret,
 };
 export default NextAuth(authOptions);

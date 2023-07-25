@@ -1,4 +1,4 @@
-# refine-test-project-by-thd-nextjs
+# refine-auth0-nextjs-typescript-demo-project
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">

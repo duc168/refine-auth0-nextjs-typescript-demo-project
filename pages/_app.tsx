@@ -17,8 +17,9 @@ import React from "react";
 import { Header } from "@components/header";
 import { ColorModeContextProvider } from "@contexts";
 import "@refinedev/antd/dist/reset.css";
-import dataProvider from "@refinedev/simple-rest";
+import dataProvider, { axiosInstance } from "@refinedev/simple-rest";
 import { appWithTranslation, useTranslation } from "next-i18next";
+import configs from "configs";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 
@@ -60,12 +61,13 @@ const App = (props: React.PropsWithChildren) => {
     },
     logout: async () => {
       signOut({
-        redirect: true,
+        redirect: false,
         callbackUrl: "/login",
       });
 
       return {
         success: true,
+        redirectTo: `${configs.AUTH0.domain}/v2/logout?returnTo=${configs.THIS_HOST}&client_id=${configs.AUTH0.clientId}&federated`
       };
     },
     onError: async (error) => {
@@ -104,7 +106,7 @@ const App = (props: React.PropsWithChildren) => {
 
   return (
     <>
-      <GitHubBanner />
+      {/* <GitHubBanner /> */}
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <Refine
