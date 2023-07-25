@@ -67,7 +67,7 @@ const App = (props: React.PropsWithChildren) => {
 
       return {
         success: true,
-        redirectTo: `${configs.AUTH0.domain}/v2/logout?returnTo=${configs.THIS_HOST}&client_id=${configs.AUTH0.clientId}&federated`
+        redirectTo: `${configs.AUTH0.domain}/v2/logout?returnTo=${window.location.origin}&client_id=${configs.AUTH0.clientId}&federated`
       };
     },
     onError: async (error) => {
